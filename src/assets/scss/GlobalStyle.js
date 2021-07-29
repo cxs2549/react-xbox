@@ -6,6 +6,16 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
   }
+
+  body {
+    scrollbar-width: none;
+    overflow: hidden;
+    background-color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+  }
   /* colors */
   :root {
     --brandBlack: #02060D;
@@ -23,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ion-icon {
-      font-size: 1.25rem;
+      font-size: 1.25rem !important;
       opacity: .85;
       cursor: pointer;
       &:hover { opacity: 1 }

@@ -10,8 +10,8 @@ const StyledHeader = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  max-width: var(--maxWidth);
-  margin: 0 auto;
+  z-index: 300;
+  border-bottom: 1px solid var(--borderColor);
 `;
 
 const Header = () => {
