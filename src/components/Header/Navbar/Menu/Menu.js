@@ -63,7 +63,7 @@ const StyledMenu = styled.div`
   }
 `;
 
-const Menu = ({ open, top, links }) => {
+const Menu = ({ open, top, links, clicked }) => {
   const [isOpen, setIsOpen] = useState({ item: null });
   const { item } = isOpen;
 

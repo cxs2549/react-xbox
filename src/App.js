@@ -3,7 +3,7 @@ import { GlobalStyle } from "./assets/scss/GlobalStyle";
 import Header from "./components/Header/Header";
 
 const StyledApp = styled.div`
-  color: $reactBlue;
+ 
 `;
 
 const App = () => {

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ogLogo from "../../../assets/og-logo.png";
 import twentyImg from "../../../assets/20.png";
 import Menu from "./Menu/Menu";
+import { Link } from "react-router-dom";
 
 const StyledNavbar = styled.nav`
   height: 100%;
@@ -13,6 +14,7 @@ const StyledNavbar = styled.nav`
   position: relative;
   z-index: 300;
   max-width: var(--maxWidth);
+  min-width: 350px;
   margin: 0 auto;
   @media (min-width: 768px) {
     padding: 0 1.5rem;
@@ -23,13 +25,8 @@ const StyledNavbar = styled.nav`
 
   #left {
     #icons {
-      display: flex;
-      align-items: center;
       @media (min-width: 768px) {
         display: none;
-      }
-      ion-icon:first-child {
-        margin-right: 1.5rem;
       }
     }
     #twentyList {
@@ -56,11 +53,31 @@ const StyledNavbar = styled.nav`
     }
 
     #firstIcon {
-      margin-top: 3px;
+      margin-top: 6px;
+
+   
     }
-    #closeIcon {
-      transform: scale(1.5);
-      margin-top: 3px;
+  }
+  #links {
+
+    
+    position: relative;
+    margin-left: .5rem;
+    @media (min-width: 1536px) {
+      margin-left: 1rem;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      left: -.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 200%;
+      width: 1px;
+      background-color: var(--borderColor);
+      @media (min-width: 1536px) {
+        left: -1rem;
+      }
     }
   }
   ul {
@@ -75,28 +92,31 @@ const StyledNavbar = styled.nav`
       &:is(:nth-child(4), :nth-child(5), :nth-child(6), :nth-child(7)) {
         display: none;
       }
-      &:is(:nth-child(4), :nth-child(5)) {
+      &:is(:nth-child(4), :nth-child(5), :nth-child(6)) {
         @media (min-width: 1280px) {
           display: flex;
         }
       }
-      &:is(:nth-child(6), :nth-child(7)) {
-        @media (min-width: 1400px) {
+      &:is(:nth-child(7)) {
+        @media (min-width: 1300px) {
           display: flex;
         }
       }
       &:nth-child(8) {
-        @media (min-width: 1400px) {
+        @media (min-width: 1300px) {
           display: none;
         }
       }
       a {
-        font-size: 15px;
+        font-size: 14px;
         color: white;
         display: block;
         text-decoration: none;
         white-space: nowrap;
         margin-right: 0.5em;
+        @media (min-width: 1536px) {
+          font-size: 1rem;
+        }
       }
     }
     ion-icon {
@@ -136,11 +156,14 @@ const StyledNavbar = styled.nav`
     }
     a {
       color: white;
-      font-size: 15px;
+      font-size: 14px;
       text-decoration: none;
       @media (min-width: 1024px) {
         margin-right: 0.5em;
         display: block;
+      }
+      @media (min-width: 1536px) {
+        font-size: 1rem;
       }
     }
     #rightIcons {
@@ -219,32 +242,27 @@ const Navbar = () => {
       <div id="left">
         <div id="icons">
           <div id="firstIcon" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? (
-              <div id="closeIcon">
-                <ion-icon name="close-outline"></ion-icon>
-              </div>
-            ) : (
-              <ion-icon name="menu-outline" size="large"></ion-icon>
-            )}
+            <ion-icon name="menu-outline" size="large"></ion-icon>
           </div>
-          <ion-icon name="search-outline"></ion-icon>
         </div>
         <div id="twentyList">
           <div id="twenty">
             <img src={twentyImg} alt="" />
           </div>
-          <ul>
-            {navLinks.map((link, i) => (
-              <li key={i}>
-                <a href="/">{link.name}</a>
-                <ion-icon name="chevron-down-outline"></ion-icon>
-              </li>
-            ))}
-          </ul>
+          <div id="links">
+            <ul>
+              {navLinks.map((link, i) => (
+                <li key={i}>
+                  <a href="/">{link.name}</a>
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       <div id="logo">
-        <img src={ogLogo} alt="" />
+        <Link to="/"><img src={ogLogo} alt="" /></Link>
       </div>
       <div id="right">
         <div id="all">
