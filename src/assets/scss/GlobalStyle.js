@@ -10,10 +10,14 @@ export const GlobalStyle = createGlobalStyle`
   body {
     scrollbar-width: none;
     overflow: hidden;
-    background-color: #000;
+    background-color: black;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  main {
+    margin-top: 99px;
   }
   /* colors */
   :root {

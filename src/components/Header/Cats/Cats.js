@@ -33,7 +33,7 @@ const StyledCats = styled.div`
     width: 75%;
     max-width: 270px;
     height: 100%;
-    padding: .25em 0;
+    margin-bottom: .5em;
     position: relative;
     input {
       border-radius: 4px;
