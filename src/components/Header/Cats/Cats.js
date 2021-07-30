@@ -32,9 +32,12 @@ const StyledCats = styled.div`
   #searchBar {
     width: 75%;
     max-width: 270px;
-    height: 100%;
+    height: 34px;
     margin-bottom: .5em;
     position: relative;
+    input[type="search"] {
+  -webkit-appearance: none;
+}
     input {
       border-radius: 4px;
       width: 100%;
@@ -43,6 +46,8 @@ const StyledCats = styled.div`
       padding: 0 .75rem;
       background-color: #343434;
       color: rgba(250, 250, 250, 0.9);
+      font-size: 14px;
+      letter-spacing: .5px;
       &:focus {
         outline: none;
       }
@@ -62,33 +67,27 @@ const Cats = () => {
     { name: "home", to: "/" },
     {
       name: "game pass",
-      to: "game-pass",
       sublinks: ["overview", "browse games", "Xbox Game Pass for PC"],
     },
     {
       name: "games",
-      to: "games",
       sublinks: ["console games", "PC games", "all games"],
     },
     {
       name: "devices",
-      to: "devices",
       sublinks: ["consoles", "accessories", "PC devices"],
     },
     { name: "play now", to: "play-now" },
     {
       name: "community",
-      to: "community",
       sublinks: ["for everyone", "xbox gear shop", "apps & entertainment"],
     },
     {
       name: "support",
-      to: "support",
       sublinks: ["xbox status", "help topics", "new in support"],
     },
     {
       name: "my xbox",
-      to: "my-xbox",
       sublinks: ["home", "profile"],
     },
   ];
@@ -102,7 +101,7 @@ const Cats = () => {
         <input type="search" placeholder="Search all Microsoft platforms" />
         <ion-icon name="search-outline"></ion-icon>
       </div>
-      <Menu open={isOpen} top="99px" links={links} />
+      <Menu open={isOpen} top="99px" links={links} fromRight />
     </StyledCats>
   );
 };

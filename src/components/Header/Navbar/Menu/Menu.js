@@ -4,19 +4,18 @@ import styled from "styled-components";
 
 const StyledMenu = styled.div`
   position: fixed;
-  left: 0;
-  top: ${(props) => props.top};
+  background-color: transparent;
+  top: 99px;
   width: 100%;
   height: 100%;
-  background-color: var(--brandBlack);
   color: white;
-  opacity: ${(props) => (props.open ? 1 : 0)};
-  visibility: ${(props) => (props.open ? "visible" : "hidden")};
-  transition: opacity 400ms;
+  left: 0;
+  transition: all 400ms;
   overflow-y: scroll;
   scrollbar-width: none;
-  padding-bottom: 60px;
-  @media (min-width: 768px) {
+  z-index: -3;
+  display: ${(props) => (props.open ? "block" : "none")}; @media
+    (min-width: 768px) {
     display: none;
   }
   #item {
@@ -29,26 +28,26 @@ const StyledMenu = styled.div`
     justify-content: space-between;
     cursor: pointer;
     &:hover {
-      opacity: .7;
+      filter: brightness(1.1);
     }
     .active {
       opacity: 1;
     }
-    a, p {
+    a,
+    p {
       color: white;
+      width: 100%;
+      height: 100%;
       text-transform: capitalize;
-      opacity: 0.85;
       text-decoration: none;
-      &:hover {
-        opacity: 0.85;
-      }
+      font-size: 1rem;
     }
   }
   #submenu {
     #subItem {
       padding: 1rem;
       padding-left: 3rem;
-      background-color: #333;
+      background-color: #262626;
       border-bottom: 1px solid var(--borderColor);
       display: flex;
       align-items: center;
@@ -57,13 +56,13 @@ const StyledMenu = styled.div`
       transition: 1s;
       text-transform: capitalize;
       &:hover {
-        opacity: .8;
+        filter: brightness(1.2);
       }
     }
   }
 `;
 
-const Menu = ({ open, top, links, clicked }) => {
+const Menu = ({ open, top, links, fromRight }) => {
   const [isOpen, setIsOpen] = useState({ item: null });
   const { item } = isOpen;
 
@@ -79,7 +78,7 @@ const Menu = ({ open, top, links, clicked }) => {
   };
 
   return (
-    <StyledMenu open={open} top={top}>
+    <StyledMenu open={open} top={top} fromRight={fromRight}>
       {links.map((link, i) => (
         <div key={i}>
           <div id="item" onClick={handleClick.bind(null, link.name)}>

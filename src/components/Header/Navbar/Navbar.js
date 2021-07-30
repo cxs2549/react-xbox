@@ -12,7 +12,7 @@ const StyledNavbar = styled.nav`
   justify-content: space-between;
   padding: 0 1rem;
   position: relative;
-  z-index: 300;
+  z-index: 1;
   max-width: var(--maxWidth);
   min-width: 350px;
   margin: 0 auto;
@@ -21,6 +21,30 @@ const StyledNavbar = styled.nav`
   }
   @media (min-width: 1600px) {
     padding: 0;
+  }
+
+  a {
+    font-size: 14px;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-right: 0.5em;
+    transition: color 400ms;
+    @media (min-width: 1536px) {
+      font-size: 1rem;
+    }
+    &:hover {
+      color: var(--brandgreenLight);
+    }
+
+    &:hover {
+      color: var(--brandGreenLight);
+    }
+    ion-icon {
+      margin-left: .5rem;
+    }
   }
 
   #left {
@@ -54,22 +78,18 @@ const StyledNavbar = styled.nav`
 
     #firstIcon {
       margin-top: 6px;
-
-   
     }
   }
   #links {
-
-    
     position: relative;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
     @media (min-width: 1536px) {
       margin-left: 1rem;
     }
     &::before {
-      content: '';
+      content: "";
       position: absolute;
-      left: -.75rem;
+      left: -0.75rem;
       top: 50%;
       transform: translateY(-50%);
       height: 200%;
@@ -107,17 +127,6 @@ const StyledNavbar = styled.nav`
           display: none;
         }
       }
-      a {
-        font-size: 14px;
-        color: white;
-        display: block;
-        text-decoration: none;
-        white-space: nowrap;
-        margin-right: 0.5em;
-        @media (min-width: 1536px) {
-          font-size: 1rem;
-        }
-      }
     }
     ion-icon {
       font-size: 16px !important;
@@ -146,24 +155,21 @@ const StyledNavbar = styled.nav`
     #all {
       display: none;
       align-items: center;
-      ion-icon {
-        font-size: 16px !important;
+      &:hover {
+        color: var(--brandGreenLight);
       }
       @media (min-width: 1024px) {
         display: flex;
         margin-right: 1.5rem;
       }
+      ion-icon {
+        font-size: 16px !important;
+      }
     }
     a {
-      color: white;
-      font-size: 14px;
-      text-decoration: none;
       @media (min-width: 1024px) {
         margin-right: 0.5em;
         display: block;
-      }
-      @media (min-width: 1536px) {
-        font-size: 1rem;
       }
     }
     #rightIcons {
@@ -201,27 +207,22 @@ const Navbar = () => {
     },
     {
       name: "PCs & devices",
-      to: "pcs-devices",
       sublinks: ["xbox game pass ultimate", "xbox live gold", "xbox games"],
     },
     {
       name: "entertainment",
-      to: "entertainment",
       sublinks: ["xbox game pass ultimate", "xbox live gold", "xbox games"],
     },
     {
       name: "business",
-      to: "business",
       sublinks: ["xbox game pass ultimate", "xbox live gold", "xbox games"],
     },
     {
       name: "developer & IT",
-      to: "dev-it",
       sublinks: ["xbox game pass ultimate", "xbox live gold", "xbox games"],
     },
     {
       name: "other",
-      to: "other",
       sublinks: ["xbox game pass ultimate", "xbox live gold", "xbox games"],
     },
     { name: "view sitemap", to: "sitemap" },
@@ -253,8 +254,10 @@ const Navbar = () => {
             <ul>
               {navLinks.map((link, i) => (
                 <li key={i}>
-                  <a href="/">{link.name}</a>
+                  <Link to="/" className="navLink">
+                    {link.name}
                   <ion-icon name="chevron-down-outline"></ion-icon>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -262,11 +265,15 @@ const Navbar = () => {
         </div>
       </div>
       <div id="logo">
-        <Link to="/"><img src={ogLogo} alt="" /></Link>
+        <Link to="/">
+          <img src={ogLogo} alt="" />
+        </Link>
       </div>
       <div id="right">
         <div id="all">
-          <a href="/">All Microsoft</a>
+          <Link to="/" className="navLink">
+            All Microsoft
+          </Link>
           <ion-icon name="chevron-down-outline"></ion-icon>
         </div>
         <div id="rightIcons">
@@ -275,7 +282,7 @@ const Navbar = () => {
           <ion-icon name="person-outline"></ion-icon>
         </div>
       </div>
-      <Menu open={isOpen} top="60px" links={links} />
+      <Menu open={isOpen} top="99px" links={links} />
     </StyledNavbar>
   );
 };

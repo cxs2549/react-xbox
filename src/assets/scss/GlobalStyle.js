@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     scrollbar-width: none;
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: black;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -18,6 +18,11 @@ export const GlobalStyle = createGlobalStyle`
 
   main {
     margin-top: 99px;
+    overflow-y: scroll !important;
+    scrollbar-width: none;
+    @media (min-width: 768px) {
+      margin-top: 59px;
+    }
   }
   /* colors */
   :root {
@@ -39,6 +44,11 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 1.25rem !important;
       opacity: .85;
       cursor: pointer;
-      &:hover { opacity: 1 }
+      transition: color 400ms;
+      &:hover { opacity: 1; }
     }
+    h2 {
+      font-size: 130%;
+    }
+    
 `;
