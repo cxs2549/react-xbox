@@ -5,7 +5,13 @@ const StyledHero = styled.div`
   overflow: hidden;
   #heroImg {
     position: relative;
-    height: 69vh;
+    height: 43vh;
+    @media (min-width: 768px) {
+      height: 53vh;
+    }
+    @media (min-width: 1024px) {
+      height: 63vh;
+    }
     &::after {
       content: "";
       position: absolute;
@@ -26,13 +32,17 @@ const StyledHero = styled.div`
     }
   }
   #textWrapper {
-    height: 70%;
+    height: 100%;
     width: 100%;
-    max-width: var(--maxWidth);
+    max-width: 1200px;
     margin: 0 auto;
     position: absolute;
-    top: 99px;
-    @media (min-width: 1536px) {
+    top: 1.5rem;
+    z-index: 3;
+    @media (min-width: 768px) {
+    }
+    @media (min-width: 1600px) {
+      top: 5rem;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -42,20 +52,23 @@ const StyledHero = styled.div`
       @media (min-width: 768px) {
         padding: 1.5rem;
       }
-      @media (min-width: 1536px) {
+      @media (min-width: 1600px) {
         padding: 0;
       }
       bottom: 0;
       left: 0;
-      height: 70%;
+      height: 100%;
       color: white;
       z-index: 2;
+      h1, p {
+        opacity: .9;
+      }
       h1 {
         line-height: 1;
         margin-bottom: 1rem;
         transition: font-size 400ms;
         @media (min-width: 1024px) {
-          font-size: 260%;
+          font-size: 280%;
         }
         @media (min-width: 1536px) {
           font-size: 290%;
@@ -93,13 +106,11 @@ const Hero = () => {
     <StyledHero>
       <div id="heroImg">
         <img src={hero} alt="" />
-      </div>
         <div id="textWrapper">
-          hi
           <div id="text">
             <h1>
               {" "}
-              Call of Duty®: <br /> Modern Warfare®
+              Call of Duty® <br /> Warzone®
             </h1>
             <p>For Xbox Series X|S & Xbox One</p>
             <button>
@@ -108,6 +119,7 @@ const Hero = () => {
             </button>
           </div>
         </div>
+      </div>
     </StyledHero>
   );
 };

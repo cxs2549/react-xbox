@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 const StyledCard = styled.div`
-  height: 500px;
+  /* height: 500px; */
   display: flex;
   flex-flow: column;
   position: relative;
@@ -17,12 +17,12 @@ const StyledCard = styled.div`
     left: 0;
     width: 100%;
     background-image: linear-gradient(to right, ${props => props.color || 'black'}, transparent);
-
+    z-index: 2;
     padding: 1.5rem 1rem;
     h1 {text-transform: capitalize;}
-    h1,
-    h2 {
+    h1, h2 {
       margin-bottom: 2rem;
+      opacity: .9;
     }
     h2 {
       @media (min-width: 640px) {
@@ -32,7 +32,7 @@ const StyledCard = styled.div`
     }
     button {
       background-color: transparent;
-      color: white;
+      color: #ffffffd0;
       border: none;
       font-size: 110%;
       font-weight: bold;
@@ -44,6 +44,7 @@ const StyledCard = styled.div`
       transition: 200ms transform;
       &:hover {
         transform: scale(1.13);
+        color: white;
       }
     }
   }

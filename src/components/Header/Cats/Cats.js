@@ -27,34 +27,34 @@ const StyledCats = styled.div`
   }
   img {
     max-height: 60%;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
   #searchBar {
     width: 75%;
     max-width: 270px;
     height: 34px;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
     position: relative;
     input[type="search"] {
-  -webkit-appearance: none;
-}
+      -webkit-appearance: none;
+    }
     input {
       border-radius: 4px;
       width: 100%;
       border: none;
       height: 100%;
-      padding: 0 .75rem;
+      padding: 0 0.75rem;
       background-color: #343434;
       color: rgba(250, 250, 250, 0.9);
       font-size: 14px;
-      letter-spacing: .5px;
+      letter-spacing: 0.5px;
       &:focus {
         outline: none;
       }
     }
     ion-icon {
       position: absolute;
-      right: .5rem;
+      right: 0.5rem;
       top: 50%;
       transform: translateY(-50%);
     }
@@ -63,6 +63,15 @@ const StyledCats = styled.div`
 
 const Cats = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    if (!isOpen) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+    setIsOpen(!isOpen);
+  };
   const links = [
     { name: "home", to: "/" },
     {
@@ -93,7 +102,7 @@ const Cats = () => {
   ];
   return (
     <StyledCats>
-      <button onClick={() => setIsOpen(!isOpen)}>
+      <button onClick={handleClick}>
         <img src={twenty} alt="" />
         <ion-icon name="chevron-down-outline"></ion-icon>
       </button>

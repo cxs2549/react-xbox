@@ -193,6 +193,11 @@ const StyledNavbar = styled.nav`
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleClick = () => {
+    setIsOpen(!isOpen)
+    document.body.classList.toggle('modal-open')
+  }
+
   const links = [
     { name: "microsoft 365", to: "m365" },
     { name: "office", to: "office" },
@@ -242,7 +247,7 @@ const Navbar = () => {
     <StyledNavbar>
       <div id="left">
         <div id="icons">
-          <div id="firstIcon" onClick={() => setIsOpen(!isOpen)}>
+          <div id="firstIcon" onClick={handleClick}>
             <ion-icon name="menu-outline" size="large"></ion-icon>
           </div>
         </div>

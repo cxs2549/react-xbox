@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import Card from "./Card/Card";
 import card1 from "../../../assets/cards/lg-card-3.jpeg";
-import card2 from "../../../assets/cards/lg-card-6.jpeg";
+import card2 from "../../../assets/cards/lg-card-5.jpeg";
 import card3 from "../../../assets/cards/lg-card-4.jpeg";
 import card4 from "../../../assets/cards/lg-card-1.jpeg";
 
 const StyledCards = styled.div`
   color: white;
   display: grid;
-  gap: 1rem;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: .5fr 1fr;
+    gap: 1rem;
   }
   @media (min-width: 1280px) {
     grid-template-columns: repeat(3, 1fr);
@@ -36,8 +36,6 @@ const Cards = () => {
       button: "join now",
       float: false,
       color: "#107C11",
-      flexRow: false,
-      height: "50%"
     },
     {
       title: "xbox design lab",
@@ -49,7 +47,7 @@ const Cards = () => {
     },
     {
       title: "death's door",
-      subtitle: "reap the souls of the dead",
+      subtitle: "Reap the souls of the dead",
       image: card4,
       button: "get it now",
       float: true,
