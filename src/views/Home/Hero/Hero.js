@@ -3,6 +3,8 @@ import hero from "../../../assets/heroes/hero-8.jpeg";
 
 const StyledHero = styled.div`
   overflow: hidden;
+  position: relative;
+  z-index: 0;
   #heroImg {
     position: relative;
     height: 43vh;
@@ -40,8 +42,7 @@ const StyledHero = styled.div`
     position: absolute;
     top: 1.5rem;
     z-index: 3;
-    @media (min-width: 768px) {
-    }
+   
     @media (min-width: 1600px) {
       top: 5rem;
       left: 50%;

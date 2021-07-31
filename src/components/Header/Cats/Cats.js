@@ -1,18 +1,20 @@
-import { useState } from "react";
 import styled from "styled-components";
 import twenty from "../../../assets/20.png";
-import Menu from "../Navbar/Menu/Menu";
 
 const StyledCats = styled.div`
   background-color: var(--brandBlack);
   padding: 0 1rem;
-  height: 40px;
+  height: 60px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--borderColor);
+  position: fixed;
+  top: 59px;
+  left: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid var(--borderColor);
   @media (min-width: 768px) {
     display: none;
   }
@@ -31,9 +33,8 @@ const StyledCats = styled.div`
   }
   #searchBar {
     width: 75%;
-    max-width: 270px;
+    max-width: 65%;
     height: 34px;
-    margin-bottom: 0.5em;
     position: relative;
     input[type="search"] {
       -webkit-appearance: none;
@@ -42,75 +43,52 @@ const StyledCats = styled.div`
       border-radius: 4px;
       width: 100%;
       border: none;
+      border: 1px solid var(--borderColor);
       height: 100%;
       padding: 0 0.75rem;
-      background-color: #333333;
+      background-color: transparent;
       color: rgba(250, 250, 250, 0.9);
       font-size: 14px;
       letter-spacing: 0.5px;
       &:focus {
         outline: none;
+        box-shadow: 0px 0px 14px #5dc21e;
+        ~ #searchIcon {
+          box-shadow: 0px 0px 10px #5dc21e;
+        }
       }
     }
-    ion-icon {
+    #searchIcon {
       position: absolute;
-      right: 0.5rem;
+      right: 0;
       top: 50%;
       transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: red;
+      border-radius: 4px;
+      border: 1px solid var(--borderColor);
+      background-color: var(--brandBlack);
+      display: grid;
+      place-items: center;
     }
   }
 `;
 
-const Cats = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = () => {
-    if (!isOpen) {
-      document.body.classList.add("modal-open");
-    } else {
-      document.body.classList.remove("modal-open");
-    }
-    setIsOpen(!isOpen);
-  };
-  const links = [
-    { name: "home", to: "/" },
-    {
-      name: "game pass",
-      sublinks: ["overview", "browse games", "Xbox Game Pass for PC"],
-    },
-    {
-      name: "games",
-      sublinks: ["console games", "PC games", "all games"],
-    },
-    {
-      name: "devices",
-      sublinks: ["consoles", "accessories", "PC devices"],
-    },
-    { name: "play now", to: "play-now" },
-    {
-      name: "community",
-      sublinks: ["for everyone", "xbox gear shop", "apps & entertainment"],
-    },
-    {
-      name: "support",
-      sublinks: ["xbox status", "help topics", "new in support"],
-    },
-    {
-      name: "my xbox",
-      sublinks: ["home", "profile"],
-    },
-  ];
+const Cats = ({clicked}) => {
+  
   return (
     <StyledCats>
-      <button onClick={handleClick}>
+      <button onClick={clicked}>
         <img src={twenty} alt="" />
         <ion-icon name="chevron-down-outline"></ion-icon>
       </button>
       <div id="searchBar">
-        <input type="search" placeholder="Search all Microsoft platforms" />
-        <ion-icon name="search-outline"></ion-icon>
+        <input type="search" placeholder="Search" />
+        <div id="searchIcon">
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
       </div>
-      <Menu open={isOpen} top="99px" links={links} fromRight />
     </StyledCats>
   );
 };
