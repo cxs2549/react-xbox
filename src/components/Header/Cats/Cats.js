@@ -44,7 +44,7 @@ const StyledCats = styled.div`
       border: none;
       height: 100%;
       padding: 0 0.75rem;
-      background-color: #343434;
+      background-color: #333333;
       color: rgba(250, 250, 250, 0.9);
       font-size: 14px;
       letter-spacing: 0.5px;

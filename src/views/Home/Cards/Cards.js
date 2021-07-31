@@ -4,13 +4,15 @@ import card1 from "../../../assets/cards/lg-card-3.jpeg";
 import card2 from "../../../assets/cards/lg-card-5.jpeg";
 import card3 from "../../../assets/cards/lg-card-4.jpeg";
 import card4 from "../../../assets/cards/lg-card-1.jpeg";
+import card5 from "../../../assets/cards/lg-card-2.jpeg";
 
 const StyledCards = styled.div`
   color: white;
   display: grid;
+
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: .5fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
     gap: 1rem;
   }
   @media (min-width: 1280px) {
@@ -26,7 +28,7 @@ const Cards = () => {
       image: card1,
       button: "shop now",
       float: true,
-      color: "#2E162E"
+      color: "#2E162E",
     },
     {
       title: "xbox game pass ultimate",
@@ -43,7 +45,7 @@ const Cards = () => {
       image: card3,
       button: "get it now",
       float: true,
-      color: "#315064"
+      color: "#315064",
     },
     {
       title: "death's door",
@@ -51,6 +53,15 @@ const Cards = () => {
       image: card4,
       button: "get it now",
       float: true,
+    },
+    {
+      title: "FIFA 22",
+      subtitle: "Pre-order the Ultimate Edition and get a FUT Hero player item",
+      image: card5,
+      button: "pre-order now",
+      float: false,
+      color: "#F6E2E4",
+      text: "black",
     },
   ];
   return (
@@ -64,6 +75,7 @@ const Cards = () => {
           button={card.button}
           float={card.float}
           color={card.color}
+          text={card.text}
           flexRows={card.flewRow}
           height={card.height}
         />

@@ -1,45 +1,51 @@
 import styled from "styled-components";
 
-
 const StyledCard = styled.div`
-  /* height: 500px; */
   display: flex;
   flex-flow: column;
   position: relative;
+  color: ${(props) => props.text || "white"};
   img {
     object-fit: cover;
     width: 100%;
     height: 100%;
   }
   #text {
-    position: ${props => (props.float ? 'absolute' : 'relative')};
+    position: ${(props) => (props.float ? "absolute" : "relative")};
     bottom: 0;
     left: 0;
     width: 100%;
-    background-image: linear-gradient(to right, ${props => props.color || 'black'}, transparent);
+    background-color: #9a9a9a21;
+    background-image: linear-gradient(
+      to right,
+      ${(props) => props.color || "black"},
+      transparent
+    );
     z-index: 2;
     padding: 1.5rem 1rem;
-    h1 {text-transform: capitalize;}
-    h1, h2 {
+    h1 {
+      text-transform: capitalize;
+    }
+    h1,
+    h2 {
       margin-bottom: 2rem;
-      opacity: .9;
+      opacity: 0.9;
     }
     h2 {
       @media (min-width: 640px) {
-
         min-height: 60px;
       }
     }
     button {
       background-color: transparent;
-      color: #ffffffd0;
+      color: inherit;
       border: none;
       font-size: 110%;
       font-weight: bold;
       text-transform: uppercase;
       display: flex;
       align-items: center;
-      gap: .2rem;
+      gap: 0.2rem;
       cursor: pointer;
       transition: 200ms transform;
       &:hover {
@@ -50,9 +56,9 @@ const StyledCard = styled.div`
   }
 `;
 
-const Card = ({title, subtitle, image, button, float, color}) => {
+const Card = ({ title, subtitle, image, button, float, color, text }) => {
   return (
-    <StyledCard image={image} float={float} color={color}>
+    <StyledCard image={image} float={float} color={color} text={text}>
       <img src={image} alt="" />
       <div id="text">
         <h1>{title}</h1>

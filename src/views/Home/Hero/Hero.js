@@ -20,10 +20,11 @@ const StyledHero = styled.div`
       width: 100%;
       height: 100%;
       background-image: linear-gradient(
-        to right,
-        var(--brandBlack) 1%,
-        transparent
-      ), linear-gradient(to top, black 2%, transparent 50%);
+          to right,
+          var(--brandBlack) 1%,
+          transparent
+        ),
+        linear-gradient(to top, black 2%, transparent 50%);
     }
     img {
       max-width: 100%;
@@ -60,8 +61,9 @@ const StyledHero = styled.div`
       height: 100%;
       color: white;
       z-index: 2;
-      h1, p {
-        opacity: .9;
+      h1,
+      p {
+        opacity: 0.9;
       }
       h1 {
         line-height: 1;
@@ -82,20 +84,77 @@ const StyledHero = styled.div`
         display: flex;
         align-items: center;
         gap: 0.25rem;
-        background-color: var(--brandGreenLight);
         border: none;
-        padding: 0.75rem 1.5rem;
+
+        white-space: nowrap;
         font-weight: 900;
         font-size: 1rem;
         border-radius: 4px;
         color: #2b2828f6;
         cursor: pointer;
         letter-spacing: 0.12em;
-        padding: 0.6em 1.5em 0.6em;
+
         transition: 500ms filter;
         &:hover {
           filter: brightness(1.2);
         }
+      }
+      .btn {
+        opacity: 0.85;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        border: 2px solid #e74c3c;
+        border-radius: 0.6em;
+        color: #e74c3c;
+        cursor: pointer;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-self: center;
+        -ms-flex-item-align: center;
+        align-self: center;
+        font-size: 1rem;
+        line-height: 1;
+        padding: 1em 2em;
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 900;
+        position: relative;
+        /* height: 60px */
+        width: 160px;
+        height: 44px;
+        span {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+        ion-icon {
+          position: absolute;
+        }
+      }
+      .btn:hover,
+      .btn:focus {
+        color: #fff;
+        outline: 0;
+        opacity: 1;
+      }
+      .third {
+        border-color: var(--brandGreenLight);
+        color: #fff;
+        box-shadow: 0 0 40px 40px var(--brandGreenLight) inset, 0 0 0 0 #3498db;
+        -webkit-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out;
+      }
+      .third:hover {
+        box-shadow: 0 0 10px 0 var(--brandGreenLight) inset,
+          0 0 10px 4px var(--brandGreenLight);
       }
     }
   }
@@ -110,12 +169,11 @@ const Hero = () => {
           <div id="text">
             <h1>
               {" "}
-              Call of Duty® <br /> Warzone®
+              Battlefield™ <br /> 2042
             </h1>
             <p>For Xbox Series X|S & Xbox One</p>
-            <button>
+            <button className="btn third">
               <span>GET IT NOW</span>
-              <ion-icon name="chevron-forward-outline"></ion-icon>
             </button>
           </div>
         </div>

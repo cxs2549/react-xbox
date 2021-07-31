@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import ogLogo from "../../../assets/og-logo.png";
 import twentyImg from "../../../assets/20.png";
@@ -30,7 +31,7 @@ const StyledNavbar = styled.nav`
     align-items: center;
     text-decoration: none;
     white-space: nowrap;
-    margin-right: 0.5em;
+    margin-left: 0.5em;
     transition: color 400ms;
     @media (min-width: 1536px) {
       font-size: 1rem;
@@ -43,7 +44,7 @@ const StyledNavbar = styled.nav`
       color: var(--brandGreenLight);
     }
     ion-icon {
-      margin-left: .5rem;
+      margin-left: 0.5em;
     }
   }
 
@@ -142,7 +143,7 @@ const StyledNavbar = styled.nav`
       transform: translateY(-50%);
     }
     @media (min-width: 1600px) {
-      left: 0;
+      left: -8px;
     }
     img {
       max-width: 120px;
@@ -164,11 +165,12 @@ const StyledNavbar = styled.nav`
       }
       ion-icon {
         font-size: 16px !important;
+        margin-left: 0.5em;
       }
     }
     a {
       @media (min-width: 1024px) {
-        margin-right: 0.5em;
+    
         display: block;
       }
     }
@@ -181,7 +183,7 @@ const StyledNavbar = styled.nav`
         margin-left: 1.5rem;
       }
     }
-    ion-icon:first-child {
+    a:first-child {
       display: none;
       @media (min-width: 768px) {
         display: block;
@@ -282,9 +284,15 @@ const Navbar = () => {
           <ion-icon name="chevron-down-outline"></ion-icon>
         </div>
         <div id="rightIcons">
-          <ion-icon name="search-outline"></ion-icon>
-          <ion-icon name="cart-outline"></ion-icon>
-          <ion-icon name="person-outline"></ion-icon>
+          <NavLink to="/">
+            <ion-icon name="search-outline"></ion-icon>
+          </NavLink>
+          <NavLink to="cart">
+            <ion-icon name="cart-outline"></ion-icon>
+          </NavLink>
+          <NavLink to="account">
+            <ion-icon name="person-outline"></ion-icon>
+          </NavLink>
         </div>
       </div>
       <Menu open={isOpen} top="99px" links={links} />
