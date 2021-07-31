@@ -20,7 +20,7 @@ const App = () => {
       <GlobalStyle />
       <StyledApp>
         <Header />
-        <main>
+        <main id="main">
           {element}
         </main>
         <Footer />

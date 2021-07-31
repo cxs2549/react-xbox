@@ -25,11 +25,16 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     scrollbar-width: none;
-    /* overflow: hidden; */
     background-color: var(--brandBlack);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  html {
+    height: -webkit-fill-available;
   }
 
   .modal-open {
@@ -38,11 +43,11 @@ export const GlobalStyle = createGlobalStyle`
 
   
   main {
-    margin-top: 99px;
+    margin-top: 119px;
     overflow-y: scroll !important;
     scrollbar-width: none;
     @media (min-width: 768px) {
-      margin-top: 59px;
+      margin-top: 59px !important;
     }
   }
   
@@ -57,5 +62,7 @@ export const GlobalStyle = createGlobalStyle`
     h2 {
       font-size: 130%;
     }
+
+ 
     
 `;

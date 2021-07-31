@@ -53,6 +53,7 @@ const StyledFooter = styled.footer`
   #corpLinks {
     text-transform: capitalize;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     row-gap: 0.25rem;
     column-gap: 1rem;
@@ -66,6 +67,7 @@ const StyledFooter = styled.footer`
     }
     p {
       padding-top: 1rem;
+      @media (min-width: 1024px) {padding-top: 0}
     }
   }
 `;

@@ -3,17 +3,15 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledMenu = styled.div`
-  position: fixed;
-  background-color: transparent;
-  top: 99px;
+  margin-top: 118px;
   width: 100%;
   height: 100%;
   color: white;
-  left: 0;
   transition: all 400ms;
   overflow-y: scroll;
   scrollbar-width: none;
-  z-index: -3;
+  position: relative;
+  z-index: 0;
   display: ${(props) => (props.open ? "block" : "none")}; @media
     (min-width: 768px) {
     display: none;
@@ -62,7 +60,7 @@ const StyledMenu = styled.div`
   }
 `;
 
-const Menu = ({ open, top, links, fromRight }) => {
+const Menu = ({ open, links }) => {
   const [isOpen, setIsOpen] = useState({ item: null });
   const { item } = isOpen;
 
@@ -78,7 +76,7 @@ const Menu = ({ open, top, links, fromRight }) => {
   };
 
   return (
-    <StyledMenu open={open} top={top} fromRight={fromRight}>
+    <StyledMenu open={open}>
       {links.map((link, i) => (
         <div key={i}>
           <div id="item" onClick={handleClick.bind(null, link.name)}>

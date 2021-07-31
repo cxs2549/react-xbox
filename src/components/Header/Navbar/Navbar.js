@@ -1,22 +1,32 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import ogLogo from "../../../assets/og-logo.png";
 import twentyImg from "../../../assets/20.png";
-import Menu from "./Menu/Menu";
 import { Link } from "react-router-dom";
 
+const StyledWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background-color: var(--brandBlack);
+  @media (min-width: 640px) {
+    border-bottom: 1px solid var(--borderColor);
+  }
+`;
+
 const StyledNavbar = styled.nav`
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  position: relative;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
   max-width: var(--maxWidth);
   min-width: 350px;
   margin: 0 auto;
+  position: relative;
   @media (min-width: 768px) {
     padding: 0 1.5rem;
   }
@@ -38,10 +48,6 @@ const StyledNavbar = styled.nav`
     }
     &:hover {
       color: var(--brandgreenLight);
-    }
-
-    &:hover {
-      color: var(--brandGreenLight);
     }
     ion-icon {
       margin-left: 0.5em;
@@ -107,7 +113,7 @@ const StyledNavbar = styled.nav`
     list-style-type: none;
     li {
       text-decoration: none;
-      margin-right: 2rem;
+      margin-right: 1.5rem;
       display: flex;
       align-items: center;
       &:is(:nth-child(4), :nth-child(5), :nth-child(6), :nth-child(7)) {
@@ -139,7 +145,7 @@ const StyledNavbar = styled.nav`
     left: 50%;
     transform: translate(-50%, -50%);
     @media (min-width: 768px) {
-      left: 1.5rem;
+      left: 1rem;
       transform: translateY(-50%);
     }
     @media (min-width: 1600px) {
@@ -170,7 +176,6 @@ const StyledNavbar = styled.nav`
     }
     a {
       @media (min-width: 1024px) {
-    
         display: block;
       }
     }
@@ -192,48 +197,7 @@ const StyledNavbar = styled.nav`
   }
 `;
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = () => {
-    setIsOpen(!isOpen)
-    document.body.classList.toggle('modal-open')
-  }
-
-  const links = [
-    { name: "microsoft 365", to: "m365" },
-    { name: "office", to: "office" },
-    { name: "windows", to: "windows" },
-    { name: "surface", to: "surface" },
-    { name: "xbox", to: "xbox" },
-    { name: "deals", to: "deals" },
-    { name: "support", to: "support" },
-    {
-      name: "software",
-      sublinks: ["windows apps", "oneDrive", "outlook"],
-    },
-    {
-      name: "PCs & devices",
-      sublinks: ["xbox game pass ultimate", "xbox live gold", "xbox games"],
-    },
-    {
-      name: "entertainment",
-      sublinks: ["xbox game pass ultimate", "xbox live gold", "xbox games"],
-    },
-    {
-      name: "business",
-      sublinks: ["xbox game pass ultimate", "xbox live gold", "xbox games"],
-    },
-    {
-      name: "developer & IT",
-      sublinks: ["xbox game pass ultimate", "xbox live gold", "xbox games"],
-    },
-    {
-      name: "other",
-      sublinks: ["xbox game pass ultimate", "xbox live gold", "xbox games"],
-    },
-    { name: "view sitemap", to: "sitemap" },
-  ];
+const Navbar = ({ clicked }) => {
   const navLinks = [
     { name: "game pass", sublinks: [] },
     { name: "games", sublinks: [] },
@@ -246,57 +210,58 @@ const Navbar = () => {
   ];
 
   return (
-    <StyledNavbar>
-      <div id="left">
-        <div id="icons">
-          <div id="firstIcon" onClick={handleClick}>
-            <ion-icon name="menu-outline" size="large"></ion-icon>
+    <StyledWrapper>
+      <StyledNavbar>
+        <div id="left">
+          <div id="icons">
+            <div id="firstIcon" onClick={clicked}>
+              <ion-icon name="menu-outline" size="large"></ion-icon>
+            </div>
+          </div>
+          <div id="twentyList">
+            <div id="twenty">
+              <img src={twentyImg} alt="" />
+            </div>
+            <div id="links">
+              <ul>
+                {navLinks.map((link, i) => (
+                  <li key={i}>
+                    <Link to="/" className="navLink">
+                      {link.name}
+                      <ion-icon name="chevron-down-outline"></ion-icon>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-        <div id="twentyList">
-          <div id="twenty">
-            <img src={twentyImg} alt="" />
-          </div>
-          <div id="links">
-            <ul>
-              {navLinks.map((link, i) => (
-                <li key={i}>
-                  <Link to="/" className="navLink">
-                    {link.name}
-                  <ion-icon name="chevron-down-outline"></ion-icon>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div id="logo">
-        <Link to="/">
-          <img src={ogLogo} alt="" />
-        </Link>
-      </div>
-      <div id="right">
-        <div id="all">
-          <Link to="/" className="navLink">
-            All Microsoft
+        <div id="logo">
+          <Link to="/">
+            <img src={ogLogo} alt="" />
           </Link>
-          <ion-icon name="chevron-down-outline"></ion-icon>
         </div>
-        <div id="rightIcons">
-          <NavLink to="/">
-            <ion-icon name="search-outline"></ion-icon>
-          </NavLink>
-          <NavLink to="cart">
-            <ion-icon name="cart-outline"></ion-icon>
-          </NavLink>
-          <NavLink to="account">
-            <ion-icon name="person-outline"></ion-icon>
-          </NavLink>
+        <div id="right">
+          <div id="all">
+            <Link to="/" className="navLink">
+              All Microsoft
+            </Link>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </div>
+          <div id="rightIcons">
+            <NavLink to="/">
+              <ion-icon name="search-outline"></ion-icon>
+            </NavLink>
+            <NavLink to="cart">
+              <ion-icon name="cart-outline"></ion-icon>
+            </NavLink>
+            <NavLink to="account">
+              <ion-icon name="person-outline"></ion-icon>
+            </NavLink>
+          </div>
         </div>
-      </div>
-      <Menu open={isOpen} top="99px" links={links} />
-    </StyledNavbar>
+      </StyledNavbar>
+    </StyledWrapper>
   );
 };
 
