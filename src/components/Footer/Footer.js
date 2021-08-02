@@ -108,7 +108,7 @@ const Footer = () => {
             <div id="group" key={i}>
               <h3>{link.title}</h3>
               {link.links.map((link, i) => (
-                <Link key={i} to="/">
+                <Link key={i} to="/in-dev">
                   {link}
                 </Link>
               ))}
@@ -121,7 +121,7 @@ const Footer = () => {
         </div>
         <div id="corpLinks">
           {corpLinks.map((link, i) => (
-            <Link to="/" key={i}>
+            <Link to="/in-dev" key={i}>
               {link}
             </Link>
           ))}

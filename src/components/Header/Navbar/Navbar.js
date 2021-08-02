@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -15,7 +15,7 @@ const StyledWrapper = styled.div`
   width: 100%;
   background-color: var(--brandBlack);
   @media (min-width: 640px) {
-    border-bottom: 1px solid var(--borderColor);
+    /* border-bottom: 1px solid var(--borderColor); */
   }
 `;
 
@@ -37,9 +37,13 @@ const StyledNavbar = styled.nav`
     padding: 0;
   }
 
+  .active {
+    color: var(--brandGreenLight) !important;
+  }
+
   a {
     font-size: 14px;
-    color: white;
+    color: inherit;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -176,6 +180,7 @@ const StyledNavbar = styled.nav`
   #right {
     display: flex;
     align-items: center;
+    color: inherit;
     #all {
       display: none;
       align-items: center;
@@ -200,6 +205,7 @@ const StyledNavbar = styled.nav`
       }
     }
     a {
+      color: inherit;
       @media (min-width: 1024px) {
         display: block;
       }
@@ -209,12 +215,12 @@ const StyledNavbar = styled.nav`
       align-items: center;
       position: relative;
       #searchButton {
-        margin-top: 3px;
+        margin-top: 2px;
       }
       a {
         margin-left: 1.5rem;
+        color: inherit;
       }
-     
     }
     #searchButton {
       display: none;
@@ -224,7 +230,6 @@ const StyledNavbar = styled.nav`
         display: block;
       }
       ion-icon {
-
       }
     }
   }
@@ -239,13 +244,13 @@ const Navbar = ({ clicked }) => {
   const [isSearch, setIsSearch] = useState(false);
 
   const handleClick = (id) => {
-    if (isOpen === id) return setIsOpen(null);
     setIsOpen(id);
+    if (isOpen === id) return setIsOpen(null);
   };
 
   const handleSearch = () => {
-    setIsSearch(false)
-  }
+    setIsSearch(false);
+  };
 
   const navLinks = [
     { name: "game pass", sublinks: [], id: "gamepass" },
@@ -355,19 +360,19 @@ const Navbar = ({ clicked }) => {
               <ul>
                 {navLinks.map((link, i) => (
                   <li key={i} onClick={() => handleClick(link.id)}>
-                    {link.to && (
-                      <Link to={link.to} className="navLink">
-                        {link.name}
-                      </Link>
-                    )}
+                    {link.to && <NavLink to={link.to}>{link.name}</NavLink>}
                     {!link.to && <p>{link.name}</p>}
                     {link.sublinks && (
                       <div id="chevron">
                         <ion-icon name="chevron-down-outline"></ion-icon>
                       </div>
                     )}
-                    {isOpen === link.id && link.id !== "playnow" && (
-                      <DropMenu open={isOpen} lists={navSubLinks[i]} />
+                    {isOpen === link.id && link.id !== "playnow" && link.id !== 'more' && (
+                      <DropMenu
+                        open={isOpen}
+                        lists={navSubLinks[i]}
+                        clicked={() => setIsOpen(null)}
+                      />
                     )}
                   </li>
                 ))}
@@ -384,23 +389,29 @@ const Navbar = ({ clicked }) => {
 
         <div id="right">
           <div id="all">
-            <div id="allMicro" className="navLink" onClick={() => handleClick("all")}>
+            <div
+              id="allMicro"
+              className="navLink"
+              onClick={() => handleClick("all")}
+            >
               All Microsoft
               {isOpen === "all" && (
-                <DropMenu open={isOpen} lists={allMSLinks} wide />
+                <DropMenu
+                  open={isOpen}
+                  lists={allMSLinks}
+                  wide
+                  clicked={() => setIsOpen(null)}
+                />
               )}
             </div>
             <ion-icon name="chevron-down-outline"></ion-icon>
           </div>
           <div id="rightIcons">
-            <div
-              id="searchButton"
-              onClick={() => setIsSearch(!isSearch)}
-            >
+            <div id="searchButton" onClick={() => setIsSearch(!isSearch)}>
               <ion-icon name="search-outline"></ion-icon>
             </div>
-              {isSearch && <Searchbar close={handleSearch} />}
-            <NavLink to="cart">
+            {isSearch && <Searchbar close={handleSearch} />}
+            <NavLink to="cart" activeClassName="active">
               <ion-icon name="cart-outline"></ion-icon>
             </NavLink>
             <NavLink to="account">

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import useClickOutside from "../../../../hooks/useClickOutside";
 import styled from "styled-components";
 
 const StyledMenu = styled.div`
@@ -61,7 +62,7 @@ const StyledMenu = styled.div`
  
 `;
 
-const Menu = ({ open, links }) => {
+const Menu = ({ open, clicked, links }) => {
   const [isOpen, setIsOpen] = useState({ item: null });
   const { item } = isOpen;
 
@@ -76,6 +77,8 @@ const Menu = ({ open, links }) => {
     }
   };
 
+
+ 
   return (
     <StyledMenu open={open}>
       {links.map((link, i) => (

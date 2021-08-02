@@ -4,8 +4,12 @@ import logo from "../../assets/logo.png";
 const StyledAccount = styled.div`
   background-color: var(--brandGreen);
   padding: 2rem 0.5rem;
+  @media (min-width: 1536px) {
+    background-image: linear-gradient(to right, black 1%, transparent);
+  }
   > div {
     background-color: #000;
+    box-shadow: 0px 3px 15px #ffffff33;
     color: white;
     max-width: 500px;
     margin: 0 auto;

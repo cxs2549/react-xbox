@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import hero from "../../../assets/heroes/hero-8.jpeg";
 
@@ -6,7 +7,6 @@ const StyledHero = styled.div`
   position: relative;
   z-index: 0;
   #heroImg {
-    position: relative;
     height: 43vh;
     @media (min-width: 768px) {
       height: 53vh;
@@ -40,7 +40,7 @@ const StyledHero = styled.div`
     max-width: 1200px;
     margin: 0 auto;
     position: absolute;
-    top: 1.5rem;
+    bottom: 0;
     z-index: 3;
 
     @media (min-width: 1600px) {
@@ -51,6 +51,9 @@ const StyledHero = styled.div`
     #text {
       position: absolute;
       padding: 1rem;
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
       @media (min-width: 768px) {
         padding: 1.5rem;
       }
@@ -70,6 +73,11 @@ const StyledHero = styled.div`
         line-height: 1;
         margin-bottom: 1rem;
         transition: font-size 400ms;
+        @media (min-width: 640px) {
+          br {
+            display: none;
+          }
+        }
         @media (min-width: 1024px) {
           font-size: 280%;
         }
@@ -92,6 +100,7 @@ const StyledHero = styled.div`
       button {
         display: flex;
         align-items: center;
+        align-self: flex-start;
         gap: 0.25rem;
         border: none;
 
@@ -107,6 +116,10 @@ const StyledHero = styled.div`
         &:hover {
           filter: brightness(1.2);
         }
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
       }
       .btn {
         opacity: 0.85;
@@ -125,7 +138,7 @@ const StyledHero = styled.div`
         display: flex;
         -webkit-align-self: center;
         -ms-flex-item-align: center;
-        align-self: center;
+        align-self: flex-start;
         font-size: 1rem;
         line-height: 1;
         padding: 1em 2em;
@@ -176,12 +189,12 @@ const Hero = () => {
         <img src={hero} alt="" />
         <div id="textWrapper">
           <div id="text">
-            <h1> Battlefield™ 2042</h1>
+            <h1> Battlefield™ <br /> 2042</h1>
             <p>
               Pre-order now and put boots <br /> on the ground early
             </p>
             <button className="btn third">
-              <span>PRE-ORDER NOW</span>
+              <Link to="/in-dev"><span>PRE-ORDER NOW</span></Link>
             </button>
           </div>
         </div>

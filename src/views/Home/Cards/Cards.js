@@ -63,6 +63,15 @@ const Cards = () => {
       color: "#F6E2E4",
       text: "black",
     },
+    {
+      title: "xbox game pass ultimate",
+      subtitle:
+        "Includes over 100 high-quality games, Xbox Live Gold, EA Play, and Perks",
+      image: card2,
+      button: "join now",
+      float: false,
+      color: "#107C11",
+    },
   ];
   return (
     <StyledCards>

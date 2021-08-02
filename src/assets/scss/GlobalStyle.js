@@ -55,9 +55,10 @@ export const GlobalStyle = createGlobalStyle`
   ion-icon {
       font-size: 1.25rem !important;
       opacity: .85;
+      color: inherit !important;
       cursor: pointer;
       transition: color 400ms;
-      &:hover { opacity: 1; color: var(--brandGreenLight) }
+      &:hover { opacity: 1; color: var(--brandGreenLight) !important; }
     }
     h2 {
       font-size: 130%;

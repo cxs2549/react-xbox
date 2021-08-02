@@ -15,6 +15,7 @@ const StyledHeader = styled.header`
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   const handleClick = () => {
     if (isOpen20) setIsOpen20(false);
     setIsOpen(!isOpen);
@@ -94,6 +95,8 @@ const Header = () => {
       sublinks: ["home", "profile"],
     },
   ];
+
+
 
   return (
     <div>

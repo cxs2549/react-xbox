@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import useClickOutside from "../../../../hooks/useClickOutside";
 
 const StyledDrops = styled.div`
   position: absolute;
@@ -63,15 +65,20 @@ const StyledDrops = styled.div`
   }
 `;
 
-const DropMenu = ({ open, lists, wide }) => {
+const DropMenu = ({ open, clicked, lists, wide }) => {
+
+
+  const domNode = useClickOutside(() => {
+    clicked()
+  });
   return (
-    <StyledDrops open={open} wide={wide}>
+    <StyledDrops open={open} wide={wide} ref={domNode}>
       {lists.map((list, i) => (
-        <div id="content">
+        <div key={i} id="content">
           {list.title && <h4>{list.title}</h4>}
           <ul>
             {lists[i].links.map((link, i) => (
-              <li>{link}</li>
+              <li key={i}><Link to="/in-dev">{link}</Link></li>
             ))}
           </ul>
         </div>

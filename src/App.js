@@ -7,6 +7,7 @@ import Home from "./views/Home/Home";
 import Play from './views/Play/Play'
 import Account from './views/Account/Account'
 import Cart from './views/Cart/Cart'
+import InDev from "./views/InDev/InDev";
 
 const StyledApp = styled.div`
  
@@ -17,6 +18,7 @@ const routes = [
   {path: "/play", element: <Play />},
   {path: "/account", element: <Account />},
   {path: "/cart", element: <Cart />},
+  {path: "/in-dev", element: <InDev />},
 ]
 
 const App = () => {

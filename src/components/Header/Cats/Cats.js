@@ -14,7 +14,7 @@ const StyledCats = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--borderColor);
+  /* border-bottom: 1px solid var(--borderColor); */
   @media (min-width: 768px) {
     display: none;
   }
