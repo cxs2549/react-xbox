@@ -80,7 +80,7 @@ const Header = () => {
       name: "devices",
       sublinks: ["consoles", "accessories", "PC devices"],
     },
-    { name: "play now", to: "play-now" },
+    { name: "play now", to: "/play" },
     {
       name: "community",
       sublinks: ["for everyone", "xbox gear shop", "apps & entertainment"],

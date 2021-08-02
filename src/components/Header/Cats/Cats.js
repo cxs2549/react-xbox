@@ -73,15 +73,20 @@ const StyledCats = styled.div`
       place-items: center;
     }
   }
+  #chevron {
+    transform: ${props => (props.open ? 'rotate(180deg)' : '')};
+  }
 `;
 
-const Cats = ({clicked}) => {
+const Cats = ({clicked, open}) => {
   
   return (
-    <StyledCats>
+    <StyledCats open={open}>
       <button onClick={clicked}>
         <img src={twenty} alt="" />
-        <ion-icon name="chevron-down-outline"></ion-icon>
+        <div id="chevron">
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </div>
       </button>
       <div id="searchBar">
         <input type="search" placeholder="Search" />

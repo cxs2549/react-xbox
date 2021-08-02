@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
-  background-color: #333333;
-  color: #ffffffe8;
+  background-color: var(--brandBlack);
+  color: var(--footerText);
   padding: 2.5rem 1rem;
   @media (min-width: 768px) {
     padding: 2.5rem 1.5rem;

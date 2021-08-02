@@ -24,7 +24,7 @@ const StyledHero = styled.div`
       background-image: linear-gradient(
           to right,
           var(--brandBlack) 1%,
-          transparent
+          transparent 25%
         ),
         linear-gradient(to top, black 2%, transparent 50%);
     }
@@ -42,7 +42,7 @@ const StyledHero = styled.div`
     position: absolute;
     top: 1.5rem;
     z-index: 3;
-   
+
     @media (min-width: 1600px) {
       top: 5rem;
       left: 50%;
@@ -74,12 +74,20 @@ const StyledHero = styled.div`
           font-size: 280%;
         }
         @media (min-width: 1536px) {
-          font-size: 290%;
+          font-size: 300%;
         }
       }
       p {
         margin-bottom: 1.5rem;
         font-weight: bold;
+        @media (min-width: 768px) {
+          font-size: 130%;
+        }
+        br {
+          @media (min-width: 1536px) {
+            display: none;
+          }
+        }
       }
       button {
         display: flex;
@@ -128,7 +136,7 @@ const StyledHero = styled.div`
         font-weight: 900;
         position: relative;
         /* height: 60px */
-        width: 160px;
+        width: 200px;
         height: 44px;
         span {
           position: absolute;
@@ -168,13 +176,12 @@ const Hero = () => {
         <img src={hero} alt="" />
         <div id="textWrapper">
           <div id="text">
-            <h1>
-              {" "}
-              Battlefield™ <br /> 2042
-            </h1>
-            <p>For Xbox Series X|S & Xbox One</p>
+            <h1> Battlefield™ 2042</h1>
+            <p>
+              Pre-order now and put boots <br /> on the ground early
+            </p>
             <button className="btn third">
-              <span>GET IT NOW</span>
+              <span>PRE-ORDER NOW</span>
             </button>
           </div>
         </div>

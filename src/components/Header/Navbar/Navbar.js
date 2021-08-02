@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ogLogo from "../../../assets/og-logo.png";
 import twentyImg from "../../../assets/20.png";
-import { Link } from "react-router-dom";
+import DropMenu from "./DropMenu/DropMenu";
+import Searchbar from "./Searchbar/Searchbar";
 
 const StyledWrapper = styled.div`
   position: fixed;
@@ -41,7 +44,6 @@ const StyledNavbar = styled.nav`
     align-items: center;
     text-decoration: none;
     white-space: nowrap;
-    margin-left: 0.5em;
     transition: color 400ms;
     @media (min-width: 1536px) {
       font-size: 1rem;
@@ -86,70 +88,85 @@ const StyledNavbar = styled.nav`
     #firstIcon {
       margin-top: 6px;
     }
-  }
-  #links {
-    position: relative;
-    margin-left: 0.5rem;
-    @media (min-width: 1536px) {
-      margin-left: 1rem;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      left: -0.75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 200%;
-      width: 1px;
-      background-color: var(--borderColor);
-      @media (min-width: 1536px) {
-        left: -1rem;
-      }
-    }
-  }
-  ul {
-    display: flex;
-    text-decoration: none;
-    list-style-type: none;
-    li {
-      text-decoration: none;
-      margin-right: 1.5rem;
+    #links {
+      position: relative;
       display: flex;
       align-items: center;
-      &:is(:nth-child(4), :nth-child(5), :nth-child(6), :nth-child(7)) {
-        display: none;
+      margin-left: 0.5rem;
+      @media (min-width: 1536px) {
+        margin-left: 1rem;
       }
-      &:is(:nth-child(4), :nth-child(5), :nth-child(6)) {
-        @media (min-width: 1280px) {
+      &::before {
+        content: "";
+        position: absolute;
+        left: -0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 200%;
+        width: 1px;
+        background-color: var(--borderColor);
+        @media (min-width: 1536px) {
+          left: -1rem;
+        }
+      }
+
+      ul {
+        display: flex;
+        text-decoration: none;
+        list-style-type: none;
+        li {
+          text-decoration: none;
           display: flex;
+          align-items: center;
+          position: relative;
+          padding: 0 1rem;
+          cursor: pointer;
+          font-size: 14px;
+          white-space: nowrap;
+          @media (min-width: 1536px) {
+            font-size: 1rem;
+          }
+          &:hover {
+            color: var(--brandGreenLight);
+          }
+          &:is(:nth-child(4), :nth-child(5), :nth-child(6), :nth-child(7)) {
+            display: none;
+          }
+          &:is(:nth-child(4), :nth-child(5), :nth-child(6)) {
+            @media (min-width: 1280px) {
+              display: flex;
+            }
+          }
+          &:is(:nth-child(7)) {
+            @media (min-width: 1300px) {
+              display: flex;
+            }
+          }
+          &:nth-child(8) {
+            @media (min-width: 1300px) {
+              display: none;
+            }
+          }
+        }
+        ion-icon {
+          font-size: 16px !important;
+          margin-left: 0.5em;
         }
       }
-      &:is(:nth-child(7)) {
-        @media (min-width: 1300px) {
-          display: flex;
-        }
-      }
-      &:nth-child(8) {
-        @media (min-width: 1300px) {
-          display: none;
-        }
-      }
-    }
-    ion-icon {
-      font-size: 16px !important;
     }
   }
+
   #logo {
     position: absolute;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     @media (min-width: 768px) {
-      left: 1rem;
+      left: 1.5rem;
       transform: translateY(-50%);
     }
     @media (min-width: 1600px) {
-      left: -8px;
+      left: -4px;
     }
     img {
       max-width: 120px;
@@ -162,12 +179,20 @@ const StyledNavbar = styled.nav`
     #all {
       display: none;
       align-items: center;
+      position: relative;
       &:hover {
         color: var(--brandGreenLight);
       }
       @media (min-width: 1024px) {
         display: flex;
         margin-right: 1.5rem;
+      }
+      #allMicro {
+        font-size: 14px;
+        cursor: pointer;
+        @media (min-width: 1536px) {
+          font-size: 1rem;
+        }
       }
       ion-icon {
         font-size: 16px !important;
@@ -182,31 +207,135 @@ const StyledNavbar = styled.nav`
     #rightIcons {
       display: flex;
       align-items: center;
-
-      ion-icon:nth-child(2),
-      ion-icon:last-child {
+      position: relative;
+      #searchButton {
+        margin-top: 3px;
+      }
+      a {
         margin-left: 1.5rem;
       }
+     
     }
-    a:first-child {
+    #searchButton {
       display: none;
+      position: relative;
+      z-index: 300;
       @media (min-width: 768px) {
         display: block;
       }
+      ion-icon {
+
+      }
     }
+  }
+  #chevron {
+    margin-top: 4px;
   }
 `;
 
 const Navbar = ({ clicked }) => {
+  const [isOpen, setIsOpen] = useState(null);
+
+  const [isSearch, setIsSearch] = useState(false);
+
+  const handleClick = (id) => {
+    if (isOpen === id) return setIsOpen(null);
+    setIsOpen(id);
+  };
+
+  const handleSearch = () => {
+    setIsSearch(false)
+  }
+
   const navLinks = [
-    { name: "game pass", sublinks: [] },
-    { name: "games", sublinks: [] },
-    { name: "devices", sublinks: [] },
-    { name: "play now", sublinks: [] },
-    { name: "community", sublinks: [] },
-    { name: "support", sublinks: [] },
-    { name: "my xbox", sublinks: [] },
-    { name: "more", sublinks: [] },
+    { name: "game pass", sublinks: [], id: "gamepass" },
+    { name: "games", sublinks: [], id: "games" },
+    { name: "devices", sublinks: [], id: "devices" },
+    { name: "community", sublinks: [], id: "community" },
+    { name: "support", sublinks: [], id: "support" },
+    { name: "my xbox", sublinks: [], id: "myxbox" },
+    { name: "play now", id: "playnow", to: "play" },
+    { name: "more", sublinks: [], id: "more" },
+  ];
+
+  const navSubLinks = [
+    [
+      {
+        links: ["overview", "browse games"],
+      },
+    ],
+    [
+      {
+        title: "console games",
+        links: [
+          "shop all console games",
+          "optimized games",
+          "backward compatible games",
+        ],
+      },
+      {
+        title: "PC games",
+        links: ["PC gaming with xbox", "xbox game pass"],
+      },
+      {
+        title: "all games",
+        links: ["explore games", "redeem code"],
+      },
+    ],
+    [
+      {
+        title: "consoles",
+        links: [
+          "new xbox consoles",
+          "new xbox series x",
+          "new xbox series 5",
+          "xbox all access",
+        ],
+      },
+      {
+        title: "accessories",
+        links: ["shop all accessories", "design your controller", "headsets"],
+      },
+      {
+        title: "PC devices",
+        links: ["gaming PCs"],
+      },
+    ],
+    [
+      { title: "community", links: ["xbox community", "multiplayer gaming"] },
+      {
+        title: "for everyone",
+        links: ["our philosophy", "responsible gaming"],
+      },
+      { title: "xbox gear shop", links: ["shop gear"] },
+      {
+        title: "apps & entertainment",
+        links: ["xbox app for mobile", "xbox app for windows 10"],
+      },
+    ],
+    [{ links: ["support", "xbox status", "help topics"] }],
+    [{ links: ["home", "profile"] }],
+  ];
+
+  const allMSLinks = [
+    { title: "software", links: ["windows apps", "oneDrive", "outlook"] },
+    {
+      title: "PCs & devices",
+      links: ["computers", "shop xbox", "accessories"],
+    },
+    {
+      title: "entertainment",
+      links: ["xbox game pass ultimate", "xbox live gold"],
+    },
+    { title: "business", links: ["microsoft azure", "microsoft 365"] },
+    {
+      title: "developer & IT",
+      links: [".NET", "visual studio", "windows server"],
+    },
+    {
+      title: "other",
+      links: ["microsoft rewards", "free downloads & security"],
+    },
   ];
 
   return (
@@ -225,33 +354,52 @@ const Navbar = ({ clicked }) => {
             <div id="links">
               <ul>
                 {navLinks.map((link, i) => (
-                  <li key={i}>
-                    <Link to="/" className="navLink">
-                      {link.name}
-                      <ion-icon name="chevron-down-outline"></ion-icon>
-                    </Link>
+                  <li key={i} onClick={() => handleClick(link.id)}>
+                    {link.to && (
+                      <Link to={link.to} className="navLink">
+                        {link.name}
+                      </Link>
+                    )}
+                    {!link.to && <p>{link.name}</p>}
+                    {link.sublinks && (
+                      <div id="chevron">
+                        <ion-icon name="chevron-down-outline"></ion-icon>
+                      </div>
+                    )}
+                    {isOpen === link.id && link.id !== "playnow" && (
+                      <DropMenu open={isOpen} lists={navSubLinks[i]} />
+                    )}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
         </div>
+
         <div id="logo">
           <Link to="/">
             <img src={ogLogo} alt="" />
           </Link>
         </div>
+
         <div id="right">
           <div id="all">
-            <Link to="/" className="navLink">
+            <div id="allMicro" className="navLink" onClick={() => handleClick("all")}>
               All Microsoft
-            </Link>
+              {isOpen === "all" && (
+                <DropMenu open={isOpen} lists={allMSLinks} wide />
+              )}
+            </div>
             <ion-icon name="chevron-down-outline"></ion-icon>
           </div>
           <div id="rightIcons">
-            <NavLink to="/">
+            <div
+              id="searchButton"
+              onClick={() => setIsSearch(!isSearch)}
+            >
               <ion-icon name="search-outline"></ion-icon>
-            </NavLink>
+            </div>
+              {isSearch && <Searchbar close={handleSearch} />}
             <NavLink to="cart">
               <ion-icon name="cart-outline"></ion-icon>
             </NavLink>
