@@ -6,7 +6,7 @@ const StyledOptions = styled.div`
   grid-template-rows: 1fr 1r;
   padding: 1rem 0;
   max-width: var(--maxWidth);
-  background-color: var(--brandBlack);
+  background-color: black;
   @media (min-width: 768px) {
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 1fr;
