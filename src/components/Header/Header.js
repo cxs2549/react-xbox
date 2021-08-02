@@ -15,6 +15,7 @@ const StyledHeader = styled.header`
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   const handleClick = () => {
     if (isOpen20) setIsOpen20(false);
     setIsOpen(!isOpen);
@@ -80,7 +81,7 @@ const Header = () => {
       name: "devices",
       sublinks: ["consoles", "accessories", "PC devices"],
     },
-    { name: "play now", to: "play-now" },
+    { name: "play now", to: "/play" },
     {
       name: "community",
       sublinks: ["for everyone", "xbox gear shop", "apps & entertainment"],
@@ -94,6 +95,8 @@ const Header = () => {
       sublinks: ["home", "profile"],
     },
   ];
+
+
 
   return (
     <div>

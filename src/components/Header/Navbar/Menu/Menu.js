@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import useClickOutside from "../../../../hooks/useClickOutside";
 import styled from "styled-components";
 
 const StyledMenu = styled.div`
@@ -12,14 +13,14 @@ const StyledMenu = styled.div`
   scrollbar-width: none;
   position: relative;
   z-index: 0;
-  display: ${(props) => (props.open ? "block" : "none")}; @media
-    (min-width: 768px) {
+  display: ${(props) => (props.open ? "block" : "none")};
+  @media (min-width: 768px) {
     display: none;
   }
   #item {
     position: relative;
     padding: 1rem;
-    background-color: #333;
+    background-color: #040404;
     border-bottom: 1px solid var(--borderColor);
     display: flex;
     align-items: center;
@@ -58,9 +59,10 @@ const StyledMenu = styled.div`
       }
     }
   }
+ 
 `;
 
-const Menu = ({ open, links }) => {
+const Menu = ({ open, clicked, links }) => {
   const [isOpen, setIsOpen] = useState({ item: null });
   const { item } = isOpen;
 
@@ -75,6 +77,8 @@ const Menu = ({ open, links }) => {
     }
   };
 
+
+ 
   return (
     <StyledMenu open={open}>
       {links.map((link, i) => (
@@ -82,7 +86,11 @@ const Menu = ({ open, links }) => {
           <div id="item" onClick={handleClick.bind(null, link.name)}>
             {link.to && <NavLink to={link.to}>{link.name}</NavLink>}
             {!link.to && <p>{link.name}</p>}
-            {link.sublinks && <ion-icon name="chevron-down-outline"></ion-icon>}
+            {link.sublinks && (
+              <div id="chevron">
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+            )}
           </div>
           {link.sublinks && item === link.name && (
             <div id="submenu">

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledCard = styled.div`
@@ -36,22 +37,16 @@ const StyledCard = styled.div`
         min-height: 60px;
       }
     }
-    button {
-      background-color: transparent;
-      color: inherit;
-      border: none;
-      font-size: 110%;
-      font-weight: bold;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-      cursor: pointer;
-      transition: 200ms transform;
-      &:hover {
-        transform: scale(1.13);
-        color: white;
-      }
+    
+  }
+  button a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    ion-icon {
+      margin-top: 2px;
+      margin-left: 0.4em;
     }
   }
 `;
@@ -63,9 +58,11 @@ const Card = ({ title, subtitle, image, button, float, color, text }) => {
       <div id="text">
         <h1>{title}</h1>
         <h2>{subtitle}</h2>
-        <button>
-          <span>{button}</span>
-          <ion-icon name="chevron-forward-outline"></ion-icon>
+        <button className="customBtn">
+          <Link to="/in-dev">
+            <span>{button}</span>
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </Link>
         </button>
       </div>
     </StyledCard>

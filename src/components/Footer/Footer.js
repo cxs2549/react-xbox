@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
-  background-color: #333333;
-  color: #ffffffe8;
+  background-color: var(--brandBlack);
+  color: var(--footerText);
   padding: 2.5rem 1rem;
   @media (min-width: 768px) {
     padding: 2.5rem 1.5rem;
@@ -108,7 +108,7 @@ const Footer = () => {
             <div id="group" key={i}>
               <h3>{link.title}</h3>
               {link.links.map((link, i) => (
-                <Link key={i} to="/">
+                <Link key={i} to="/in-dev">
                   {link}
                 </Link>
               ))}
@@ -121,7 +121,7 @@ const Footer = () => {
         </div>
         <div id="corpLinks">
           {corpLinks.map((link, i) => (
-            <Link to="/" key={i}>
+            <Link to="/in-dev" key={i}>
               {link}
             </Link>
           ))}
