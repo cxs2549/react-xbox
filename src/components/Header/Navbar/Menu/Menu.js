@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import useClickOutside from "../../../../hooks/useClickOutside";
 import styled from "styled-components";
 
 const StyledMenu = styled.div`
