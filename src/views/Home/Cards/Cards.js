@@ -5,6 +5,7 @@ import card2 from "../../../assets/cards/lg-card-5.jpeg";
 import card3 from "../../../assets/cards/lg-card-4.jpeg";
 import card4 from "../../../assets/cards/lg-card-1.jpeg";
 import card5 from "../../../assets/cards/lg-card-2.jpeg";
+import card6 from "../../../assets/cards/lg-card-6.jpeg";
 
 const StyledCards = styled.div`
   color: white;
@@ -52,6 +53,7 @@ const Cards = () => {
       subtitle: "Reap the souls of the dead",
       image: card4,
       button: "get it now",
+      color: "black",
       float: true,
     },
     {

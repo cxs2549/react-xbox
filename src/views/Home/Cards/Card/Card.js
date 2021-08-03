@@ -16,10 +16,10 @@ const StyledCard = styled.div`
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #9a9a9a21;
+    background-color: transparent;
     background-image: linear-gradient(
       to right,
-      ${(props) => props.color || "black"},
+      ${(props) => props.color || "transparent"},
       transparent
     );
     z-index: 2;

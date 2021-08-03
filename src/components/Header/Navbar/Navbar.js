@@ -20,22 +20,22 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledNavbar = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-  width: 100%;
-  height: 100%;
-  max-width: var(--maxWidth);
-  min-width: 350px;
-  margin: 0 auto;
-  position: relative;
-  @media (min-width: 768px) {
-    padding: 0 1.5rem;
-  }
-  @media (min-width: 1600px) {
-    padding: 0;
-  }
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 1rem;
+	width: 100%;
+	height: 100%;
+	max-width: var(--maxWidth);
+	min-width: 350px;
+	margin: 0 auto;
+	position: relative;
+	@media (min-width: 768px) {
+		padding: 0 1.5rem;
+	}
+	@media (min-width: 1600px) {
+		padding: 0;
+	}
 
   .active {
     color: var(--brandGreenLight) !important;
@@ -60,34 +60,34 @@ const StyledNavbar = styled.nav`
     }
   }
 
-  #left {
-    #icons {
-      @media (min-width: 768px) {
-        display: none;
-      }
-    }
-    #twentyList {
-      display: none;
-      align-items: center;
-      text-transform: capitalize;
-      @media (min-width: 768px) {
-        display: flex;
-      }
-    }
-    #twenty {
-      display: none;
-      height: 100%;
-      margin-right: 1rem;
-      img {
-        height: 30px;
-        margin-top: 2px;
-      }
-      @media (min-width: 768px) {
-        display: block;
-        margin-left: 100px;
-        padding-left: 2rem;
-      }
-    }
+	#left {
+		#icons {
+			@media (min-width: 768px) {
+				display: none;
+			}
+		}
+		#twentyList {
+			display: none;
+			align-items: center;
+			text-transform: capitalize;
+			@media (min-width: 768px) {
+				display: flex;
+			}
+		}
+		#twenty {
+			display: none;
+			height: 100%;
+			margin-right: 1rem;
+			img {
+				height: 30px;
+				margin-top: 2px;
+			}
+			@media (min-width: 768px) {
+				display: block;
+				margin-left: 100px;
+				padding-left: 2rem;
+			}
+		}
 
     #firstIcon {
       margin-top: 6px;
@@ -424,4 +424,4 @@ const Navbar = ({ clicked }) => {
   );
 };
 
-export default Navbar;
+export default Navbar
